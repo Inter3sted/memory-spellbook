@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* === GLOBAL PIXEL FONT === */
+body, html, #root {
+  font-family: 'Press Start 2P', cursive;
+  background-color: black;
+  color: #00f0ff;
+  image-rendering: pixelated;
+  overflow: hidden;
+  position: relative;
+}
+
+/* === PIXEL UTILITY CLASSES === */
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.pixel-shadow {
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 #000;
+}
+
+.pixel-border {
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px #000;
+}
+
+/* === GLOWING BUTTON === */
+.btn-pixel {
+  font-family: 'Press Start 2P', cursive;
+  background: #001b33;
+  color: #00f0ff;
+  padding: 0.75rem 1.5rem;
+  border: 3px solid #00f0ff;
+  text-transform: uppercase;
+  text-shadow: 0 0 4px #00f0ff;
+  box-shadow: 0 0 6px #00f0ff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-pixel:hover {
+  background: #003d66;
+  box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  transform: scale(1.05);
+}
+
+/* === NES-STYLE CARD FLIPPING === */
+.flip-container {
+  perspective: 800px;
+}
+
+.card-flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s steps(2);
+}
+
+.card-flip.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  image-rendering: pixelated;
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* === SCANLINES (CRT EFFECT) === */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.07),
+    rgba(0, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* === VHS NOISE OVERLAY === */
+.crt-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/src/assets/noise_texture.gif") repeat;
+  opacity: 0.035;
+  z-index: 49;
+  pointer-events: none;
+}
+
+/* === CHROMATIC ABERRATION RGB SHIFT === */
+.rgb-shift {
+  text-shadow:
+    -1px 0 red,
+    1px 0 blue,
+    0 1px green;
+}
+
+/* === STATIC BURST FLASH (TRIGGERED MANUALLY) === */
+.static-burst::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0.15;
+  mix-blend-mode: lighten;
+  animation: burstFlash 0.15s ease-in-out;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@keyframes burstFlash {
+  0% { opacity: 0.15; }
+  100% { opacity: 0; }
+}
+
+/* === CRT FLICKER FOR PAUSE OR OVERLAY === */
+.crt-flicker {
+  animation: crtFlicker 0.12s infinite;
+}
+
+@keyframes crtFlicker {
+  0%, 100% { opacity: 0.93; }
+  50% { opacity: 1; }
+}
+
+/* === OPTIONAL INTERLACED WAVES === */
+.interlaced-bend::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.1) 2px,
+    transparent 4px
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.04;
+  animation: waveBend 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 40;
+}
+
+@keyframes waveBend {
+  0%, 100% {
+    transform: skewX(0.2deg);
+  }
+  50% {
+    transform: skewX(-0.2deg);
+  }
+}
