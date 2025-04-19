@@ -20,7 +20,7 @@
 ### Stack
 - **React** (Vite setup)
 - **Tailwind CSS** for styling and CRT effects
-- **Audio:** Ambient music loop + SFX for match, mismatch, victory
+- **Audio:** Ambient music loop + SFX for match, mismatch, victory [Temple Fantasy by szegvari on Freesound]
 - **Asset pipeline:** PNG cards and backgrounds, MP3 audio, GIF overlay noise
 
 ### Structure
