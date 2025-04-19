@@ -1,0 +1,35 @@
+# .github/workflows/gh-pages.yml
+
+name: 🚀 Deploy Memory Spellbook
+
+# Trigger the ritual upon pushes to your main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Retrieve the full repository, including branches
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      # 2. Provision Node.js—your magical runtime
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # 3. Install project dependencies
+      - run: npm ci
+
+      # 4. Summon the production build
+      - run: npm run build
+
+      # 5. Invoke gh-pages to publish your static site
+      - run: npx gh-pages -d dist # or ‘build’ if you reconfigured Vite’s outDir
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
