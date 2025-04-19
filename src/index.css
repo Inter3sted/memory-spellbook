@@ -1,24 +1,14 @@
-<<<<<<< HEAD
-=======
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 /* === GLOBAL PIXEL FONT === */
-body, html, #root {
-  font-family: 'Press Start 2P', cursive;
-=======
 body,
 html,
 #root {
   font-family: "Press Start 2P", cursive;
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
   background-color: black;
   color: #00f0ff;
   image-rendering: pixelated;
@@ -26,10 +16,9 @@ html,
   position: relative;
 }
 
-<<<<<<< HEAD
 /* === PIXEL UTILITY CLASSES === */
 .font-pixel {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 
 .pixel-shadow {
@@ -43,34 +32,7 @@ html,
 
 /* === GLOWING BUTTON === */
 .btn-pixel {
-  font-family: 'Press Start 2P', cursive;
-=======
-/* Custom Flip Utilities */
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* Pixel Font */
-.font-pixel {
   font-family: "Press Start 2P", cursive;
-}
-
-/* Glowing Pixel Button */
-.btn-pixel {
-  font-family: "Press Start 2P", cursive;
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
   background: #001b33;
   color: #00f0ff;
   padding: 0.75rem 1.5rem;
@@ -88,7 +50,6 @@ html,
   transform: scale(1.05);
 }
 
-<<<<<<< HEAD
 /* === NES-STYLE CARD FLIPPING === */
 .flip-container {
   perspective: 800px;
@@ -122,9 +83,6 @@ html,
 }
 
 /* === SCANLINES (CRT EFFECT) === */
-=======
-/* CRT Scanlines */
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
 .scanlines::before {
   content: "";
   position: absolute;
@@ -140,11 +98,7 @@ html,
   pointer-events: none;
 }
 
-<<<<<<< HEAD
 /* === VHS NOISE OVERLAY === */
-=======
-/* CRT Noise Overlay */
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
 .crt-noise::after {
   content: "";
   position: absolute;
@@ -155,24 +109,12 @@ html,
   pointer-events: none;
 }
 
-<<<<<<< HEAD
 /* === CHROMATIC ABERRATION RGB SHIFT === */
-.rgb-shift {
-  text-shadow:
-    -1px 0 red,
-    1px 0 blue,
-    0 1px green;
-}
-
-/* === STATIC BURST FLASH (TRIGGERED MANUALLY) === */
-=======
-/* RGB Chromatic Shift */
 .rgb-shift {
   text-shadow: -1px 0 red, 1px 0 blue, 0 1px green;
 }
 
-/* Static Burst Flash */
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
+/* === STATIC BURST FLASH (TRIGGERED MANUALLY) === */
 .static-burst::before {
   content: "";
   position: absolute;
@@ -185,30 +127,31 @@ html,
   z-index: 100;
 }
 
-<<<<<<< HEAD
 @keyframes burstFlash {
-  0% { opacity: 0.15; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* === CRT FLICKER FOR PAUSE OR OVERLAY === */
-=======
-/* CRT Flicker */
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
 .crt-flicker {
   animation: crtFlicker 0.12s infinite;
 }
 
-<<<<<<< HEAD
 @keyframes crtFlicker {
-  0%, 100% { opacity: 0.93; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.93;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* === OPTIONAL INTERLACED WAVES === */
-=======
-/* Interlaced Bending Effect */
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)
 .interlaced-bend::before {
   content: "";
   position: absolute;
@@ -225,15 +168,13 @@ html,
   pointer-events: none;
   z-index: 40;
 }
-<<<<<<< HEAD
 
 @keyframes waveBend {
-  0%, 100% {
+  0%,
+  100% {
     transform: skewX(0.2deg);
   }
   50% {
     transform: skewX(-0.2deg);
   }
 }
-=======
->>>>>>> 14512f7 (Stable build: Escape fix, autoplay levels, no border, polished UI)

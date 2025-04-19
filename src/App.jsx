@@ -1,4 +1,4 @@
-// App.jsx – Memory Spellbook with enhanced keyboard support (4-way), escape key fix, cheat key, and title image
+// App.jsx – Memory Spellbook with fixed card flipping, enhanced keyboard support, escape key fix, cheat key, and title image
 import React, { useEffect, useState, useRef } from "react";
 import Card from "./components/Card";
 import LevelSelect from "./components/LevelSelect";
@@ -72,13 +72,9 @@ function App() {
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape") {
-        if (paused) {
-          setPaused(false);
-        } else if (gameStarted) {
-          setPaused(true);
-        } else if (showLevelSelect) {
-          setShowLevelSelect(false);
-        }
+        if (paused) setPaused(false);
+        else if (gameStarted) setPaused(true);
+        else if (showLevelSelect) setShowLevelSelect(false);
       }
 
       if (e.key === "c" && !gameStarted && !showLevelSelect) {
@@ -117,34 +113,26 @@ function App() {
       card !== choiceTwo &&
       !card.matched
     ) {
-      if (!choiceOne) {
-        setChoiceOne(card);
-      } else if (!choiceTwo) {
-        setChoiceTwo(card);
-        setDisabled(true);
-      }
+      choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     }
   };
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
+      setDisabled(true);
       if (choiceOne.src === choiceTwo.src) {
         matchSound.current.currentTime = 0;
         matchSound.current.play();
-        setCards((prev) =>
-          prev.map((card) =>
+        setCards((prevCards) =>
+          prevCards.map((card) =>
             card.src === choiceOne.src ? { ...card, matched: true } : card
           )
         );
-        setTimeout(() => {
-          resetTurn();
-        }, 1000);
+        setTimeout(resetTurn, 1000);
       } else {
         mismatchSound.current.currentTime = 0;
         mismatchSound.current.play();
-        setTimeout(() => {
-          resetTurn();
-        }, 1000);
+        setTimeout(resetTurn, 1000);
       }
     }
   }, [choiceOne, choiceTwo]);
@@ -158,13 +146,17 @@ function App() {
 
   const shuffleCards = (lvl) => {
     const totalPairs = 3 + lvl;
-    const available = [...cardImages];
-    while (available.length < totalPairs)
-      available.push(...cardImages.map((card) => ({ ...card })));
-    const selected = available.slice(0, totalPairs);
-    const shuffled = [...selected, ...selected]
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random(), matched: false }));
+    const selected = [];
+    while (selected.length < totalPairs) {
+      const index = Math.floor(Math.random() * cardImages.length);
+      const card = cardImages[index];
+      if (!selected.includes(card)) selected.push(card);
+    }
+    const paired = selected.flatMap((card) => [
+      { ...card, id: Math.random(), matched: false },
+      { ...card, id: Math.random(), matched: false },
+    ]);
+    const shuffled = paired.sort(() => Math.random() - 0.5);
 
     setCards(shuffled);
     setChoiceOne(null);
