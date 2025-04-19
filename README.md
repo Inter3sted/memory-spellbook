@@ -7,7 +7,6 @@
 ## 🎮 Game Features
 
 - **Pixel Art Design:** Inspired by NES and fantasy themes
-- **CRT Aesthetic:** Includes VHS-style scanlines, flicker, RGB shift, and noise overlays
 - **12-Level Campaign:** Each level introduces more card pairs (starting at 4, increasing to 15+)
 - **Endless Mode:** Unlocks after completing all 12 levels
 - **Keyboard/Gamepad Support:** Arrow keys or D-Pad to move, Enter to flip
@@ -42,7 +41,6 @@
 
 ### April 16, 2025
 - 🎉 Project began. Base memory game logic implemented.
-- 🎨 CRT aesthetic added (scanlines, RGB, flicker, static)
 - 🔊 Audio files hooked in: match, mismatch, and victory sounds
 - 🧠 Added 12 progressive levels + level background changes
 - 🧪 GitHub Pages build and testing began
@@ -55,6 +53,10 @@
 - 🔄 Fixed ESC menu, return-to-title working again
 - 💡 Cheat unlock toggle now toggled with C key
 - 🧪 Finalized current stable build and separated dev branch
+
+### April 19, 2025
+- 🧩 Card sticking on both front and back bug fixed
+- 🏁 Github Actions automation implemented
 
 ---
 
